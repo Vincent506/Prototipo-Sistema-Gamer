@@ -1,0 +1,7 @@
+body {
+  /* Os dispositivos Apple usarão a SF Pro instalada de fábrica automaticamente. 
+     Dispositivos Windows, Linux e Android usarão a Inter baixada da web. */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
