@@ -1,6 +1,5 @@
 const prompt = require("prompt-sync")();
 
-let time = [];
 let listaJogadores = [];
 
 function mostrarMenu(){
@@ -25,7 +24,6 @@ function cadastrarJogador() {
     
     let nomeUsuario = prompt('Digite o nome do jogador:');
     jogador.nome = nomeUsuario;
-    time.push(nomeUsuario);
     let nomeFuncao = prompt('Digite a função do jogador');
     jogador.funcao = nomeFuncao;
     let playerPoints = Number.parseInt(prompt('Digite o número atual da pontuação do jogador'));
@@ -39,12 +37,9 @@ function cadastrarJogador() {
     }
     let continuation = true;
     while(continuation){
-        let option = prompt('O jogador está ativo?(sim-não)');
-        if(option === 'sim'|| option ==='SIM'){
-            jogador.estaAtivo = option;
-            continuation = false;
-        }else if(option === 'não'|| option==='NÃO'){
-            jogador.estaAtivo = option;
+        let option = prompt('O jogador está ativo?(sim-não)').toLocaleLowerCase().trim();
+        if(option === 'sim' || option === 'nao' || option === 'não'){
+            jogador.estaAtivo = option === 'sim' ? 'sim' : 'não';
             continuation = false;
         }else{                 
             console.log('Digite sim ou não como resposta');
@@ -55,14 +50,14 @@ function cadastrarJogador() {
     console.log("Jogador "+nomeUsuario+" foi cadastrado com sucesso!"); 
 }
 function mostrarTime(){
-    if(time.length === 0){
+    if(listaJogadores.length === 0){
         console.log('Nenhum jogador registrado no momento. Cadastre novos jogadores para ter acesso a lista');
         return;
     }
-    
+    let nomesDosJogadores = listaJogadores.map(j => j.nome);
     console.log('_____________________________');
     console.log('Sua equipe atual:');
-    console.log('Time: ',time);
+    console.log('Time: ',nomesDosJogadores);
     console.log('_____________________________')
 }
 function informJogador(objeto){
@@ -88,20 +83,19 @@ function detalhar(){
     }
 }
 function deletarJogador(){
-    if (time.length === 0) {
+    if (listaJogadores.length === 0) {
         console.log('Nenhum Jogador cadastrado!');
         return;
         }
 
     mostrarTime();
     let nomeDeletado = prompt("Digite o nome a ser deletado: ");
-    let index = time.indexOf(nomeDeletado);
+    let index = listaJogadores.findIndex(j => j.nome.toLowerCase() === nomeDeletado.toLowerCase());
     if (index == -1) {
         console.log('Jogador não encontrado');
         return;
     }
                 
-    time.splice(index,1);
     listaJogadores.splice(index,1);
     console.log('Jogador(a) '+ nomeDeletado+' foi removida do sistema');
 }
@@ -139,9 +133,13 @@ function mediaDaEquipe(){
             contador +=1;
         }
     }
-    let media = soma/contador;
     mostrarTime();
-    console.log('A média da pontuação dos jogadores ativos da equipe é ',media);
+    if (contador>0) {
+        let media = soma/contador;
+        console.log('A média da pontuação dos jogadores ativos da equipe é ',media);
+    }else{
+        console.log('Não há jogadores ativos na equipe para calcular e exibir a média')
+    }
 }
 function atualizarPontos(){
     if (listaJogadores.length === 0) {
