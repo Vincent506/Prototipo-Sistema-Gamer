@@ -11,7 +11,7 @@
     </nav>
 </head>
 <body>
-    <form action="" method="GET">
+    <form id="formCadastro">
         <label for="">Nome do Jogador: </label>
         <input type="text" name="nome da pessoa" id="nomeUser">
         <br>
@@ -21,13 +21,15 @@
         <label for="">Pontuação:</label>
         <input type="number" name="pontuacao" id="pointsUser">
         <br>
-        <label for="">Status: </label>
+        <label>Status: </label>
         <br>
-        <label for="">Ativo</label>
-        <input type="checkbox" name="Ativo" id="verdadeiro">
-        <label for="">Inativo</label>
-        <input type="checkbox" name="Inativo" id="falso">
+        <label for="statusjogador">Ativo</label>
+        <input type="radio" name="statusjogador" id="statusAtivo">
+        <label for="statusjogador">Inativo</label>
+        <input type="radio" name="statusjogador" id="statusInativo">
+        <br>
+        <button type="submit">Enviar</button>
     </form>
-    <button type="submit" >Enviar</button>
+    <script src="app-web.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt=BR">
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,36 +38,14 @@
                     <td>Pontuação</td>
                     <td>Status</td>
                 </tr>
+                </thead>
+            <!-- O JavaScript usará este ID para injetar as linhas dinamicamente -->
+            <tbody id="tabelaJogadores">
+                <!-- Se não houver dados, o JS substituirá isso automaticamente -->
                 <tr>
-                    <td>Bruto</td>
-                    <td>Lider</td>
-                    <td>3500</td>
-                    <td>Ativo</td>
+                    <td colspan="4" style="text-align: center; color: gray;">Nenhum jogador cadastrado ainda.</td>
                 </tr>
-                <tr>
-                    <td>Fêmea</td>
-                    <td>Assassino</td>
-                    <td>5000</td>
-                    <td>Ativo</td>
-                </tr>
-                <tr>
-                    <td>Françes</td>
-                    <td>Engenheiro Químico</td>
-                    <td>2800</td>
-                    <td>Ativo</td>
-                </tr>
-                <tr>
-                    <td>Hughue</td>
-                    <td>Suporte</td>
-                    <td>1200</td>
-                    <td>Ativo</td>
-                </tr>
-                <tr>
-                    <td>Leitinho</td>
-                    <td>Tanque</td>
-                    <td>3200</td>
-                    <td>Ativo</td>
-                </tr>
+            </tbody>
             </table>
 
             <footer>
@@ -86,5 +64,6 @@
                 </li>
             </ul>
             </footer>
+            <script src="listagem-web.js"></script>
     </body>
 </html>
